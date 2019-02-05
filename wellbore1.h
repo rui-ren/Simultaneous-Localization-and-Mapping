@@ -9,8 +9,17 @@
 using namespace std;
 double PI = 3.1415926;
 
+// Delta flow monitoring and PID control
+double Delta_flow(double Q_injection, double Q_outflow);
+// Pressure function
 double wellboreAnnulus_pressure_drop(double Length, double D_po, double D_to, double L_tooljoint, double stdoff, double m, double D_hl, double e_den, double t_y, double K, double Q, double ToolJoint, double Roughness_wellbore, double Tortuosity);
 double wellboreDrillpipe_pressure_drop(double m, double D_pi, double e_den, double t_y, double K, double Q);
+
+// Temperature profile function
+double wellboreAnnulus_temperature_drop();
+double wellboreDrillpipe_temperature_drop();
+
+// Lost circulation function
 double fracture_loss_model(double A_frac_initial, double m, double Q, double pressure_wellbore);
 
 double wellboreAnnulus_pressure_drop(double Length, double D_po, double D_to,  double L_tooljoint, double stdoff, double m, double D_hl, double e_den, double t_y, double K, double Q, double ToolJoint, double Roughness_wellbore, double Tortuosity)
@@ -311,6 +320,22 @@ double wellboreDrillpipe_pressure_drop(double m, double D_pi, double e_den, doub
 	double pressure_drop_pipe = 4 * t_w / D_pi;
 	std::cout << "the pressure drop in pipe" << pressure_drop_pipe << endl;
 	return pressure_drop_pipe;
+}
+
+double wellboreAnnulus_temperature_drop()
+{
+	// Linear temperature profile in the wellbore
+
+
+}
+double wellboerDrillpipe_temperature_drop()
+
+double Delta_flow(double Q_injection, double Q_outflow)
+{
+	// embeded PID controller! For Lost circulation
+
+	Delta_flow = Q_injection - Q_outflow;
+	return Delta_flow
 }
 
 double fracture_loss_model(double t_y, double K, double e_mix, double r, double w_i, double m, double Q_loss, double pressure_wellbore)

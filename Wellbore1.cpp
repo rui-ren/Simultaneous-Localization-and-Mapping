@@ -109,7 +109,7 @@ int main(){
 
 	//  flow rate need to calculate!
 
-	double Q = 697.23;     // gpm
+	double Q = 697.23;     // gpm            // Injection flow rate
     Q = Q * (3.785 * pow(10, -3) / 60);       // convert gpm to m^3 /s.
 
 	 // transform inch to m     (wellbore)
