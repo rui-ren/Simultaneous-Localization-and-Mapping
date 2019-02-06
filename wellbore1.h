@@ -1,6 +1,9 @@
 // Calculate the model for the well trajectory
 // Compare with the existing model
 
+//////////////////////////////////////////////////////////////////////// Check all the double , avoid the / 出错@！！！！1
+
+
 #pragma once
 #include <math.h>
 #include <iostream>
@@ -9,19 +12,20 @@
 using namespace std;
 double PI = 3.1415926;
 
+//Declare function!
 // Delta flow monitoring and PID control
 double Delta_flow(double Q_injection, double Q_outflow);
 // Pressure function
 double wellboreAnnulus_pressure_drop(double Length, double D_po, double D_to, double L_tooljoint, double stdoff, double m, double D_hl, double e_den, double t_y, double K, double Q, double ToolJoint, double Roughness_wellbore, double Tortuosity);
 double wellboreDrillpipe_pressure_drop(double m, double D_pi, double e_den, double t_y, double K, double Q);
-
 // Temperature profile function
 double wellboreAnnulus_temperature_drop();
 double wellboreDrillpipe_temperature_drop();
-
 // Lost circulation function
 double fracture_loss_model(double A_frac_initial, double m, double Q, double pressure_wellbore);
 
+
+// function body!
 double wellboreAnnulus_pressure_drop(double Length, double D_po, double D_to,  double L_tooljoint, double stdoff, double m, double D_hl, double e_den, double t_y, double K, double Q, double ToolJoint, double Roughness_wellbore, double Tortuosity)
 {
 	double pressure_drop_tooljoint = 0;
@@ -322,14 +326,24 @@ double wellboreDrillpipe_pressure_drop(double m, double D_pi, double e_den, doub
 	return pressure_drop_pipe;
 }
 
-double wellboreAnnulus_temperature_drop()
+double wellboreDrillpipe_temperature_drop(double e_den, double Q_injection, double Cp, double D_Pi, double U, double P_pressure, double pressure_drop_pipe, double T_dpi, double T_s, double ho, double G_thom, double Length)
 {
-	// Linear temperature profile in the wellbore
-
-
+	// Linear temperature profile in the wellbore, analytical solution of the temperature profile
+	double r1, r2;    // check this line if it is correct or not!!!
+	r1 = ((2 * PI * D_Pi/2 * ho) + sqrt((2 * PI * D_Pi/2 * ho)^2 + 4 * (2 * PI * D_Pi/2 * U) * (2 * PI * D_Pi/2 * ho))) / (2 * e_den * Q_injection * PI * ho );
+	r1 = ((2 * PI * D_Pi/2 * ho) - sqrt((2 * PI * D_Pi/2 * ho)^2 + 4 * (2 * PI * D_Pi/2 * U) * (2 * PI * D_Pi/2 * ho))) / (2 * e_den * Q_injection * PI * ho );
+	double A = e_den * Q_injection * Cp / (2 * PI * D_Pi/2 * U);
+	double C1, C2;
+	C1 = ((T_dpi - T_s - P_pressure/(2 * PI * D_Pi/2 * U) - (P_Pressure + pressure_drop_pipe)/(2 * PI* D_Pi/2 * ho) +A * G_thom) * (A * r2 * exp(r2 * Length)) - pressure_drop_pipe/(2 * PI * D_Pi/2 * U) + A * G_thom) ...
+	/(A * r2 * exp(r2 * Length) - A * r1 * exp(r1 * Length));
+	C2 = T_dpi - T_s - P_pressure/(2 * PI * D_Pi/2 * U) - (P_Pressure + pressure_drop_pipe)/(2 * PI * D_Pi/2 * ho) + A * G_thom - C1;
+	double Tdpi = C1 + C2 + T_s + P_Pressure / (2 * PI * D_Pi/2 * U) + (P_Pressure + pressure_drop_pipe)/(2 * PI * D_Pi/2 * ho) + A * G_thom;
+	return Tdpi;
 }
-double wellboerDrillpipe_temperature_drop()
-
+double wellboerAnnulus_temperature_drop()
+{
+	
+}
 double Delta_flow(double Q_injection, double Q_outflow)
 {
 	// embeded PID controller! For Lost circulation

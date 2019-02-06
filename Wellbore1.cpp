@@ -88,7 +88,9 @@ int main(){
 	double K = 0.3285;      // flow consistency
 	double m = 0.7323;      // flow index
 	double g = 9.8;         // gravity acceleration
-
+	
+	// Use the reference and build a Unit transfer function!!!
+	
 	// cutting transport parameter
 	double ROP = 20;                     // Check the unit ft/hour                       (back calculate)
 	double ds = 2/1000000;               // Particle diameter of the      cm^2
@@ -143,7 +145,7 @@ int main(){
 	double Tortuosity = 0;          // take the tortuosity into consideration..
 	double Roughness_wellbore = 0;  // take roughness of wellbore into consideration..
 
-	double Length = 0;
+	double Length = 0;    // This is roughness length ??? 
 
 	//////////////////////////////////////// frictional pressure drop /////////////////////////////////////////////////
 
