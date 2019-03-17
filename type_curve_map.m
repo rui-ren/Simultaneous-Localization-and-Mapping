@@ -63,9 +63,11 @@ for j = 1: v
     
     % this solution for large order might not be accurate!
     % we use simpson integrition
+    
         for i = 1:n
         f=@(x) 2.^((m+1)./m).* x .* ((x.^(1-m)-1)./(1-m)).^(1./m) ./ (1 - a(j).*(x -1)).^(1./m);
-        I(i,1) = simpsons( f,1,y(i), 10000);
+        I(i,1) = simpsons( f,1,y(i), 10000);    
+        %%% we can not use Simpson here, the equally step will have HUGE error
         J(i,1) = y(i)^2 - 1;
         end
         
