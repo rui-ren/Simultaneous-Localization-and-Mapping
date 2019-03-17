@@ -61,6 +61,7 @@ for j = 1: v
     I = zeros(n,1);
     J = zeros(n,1);
     
+    % this solution for large order might not be accurate!
     % we use simpson integrition
         for i = 1:n
         f=@(x) 2.^((m+1)./m).* x .* ((x.^(1-m)-1)./(1-m)).^(1./m) ./ (1 - a(j).*(x -1)).^(1./m);
