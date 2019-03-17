@@ -68,6 +68,7 @@ for j = 1: v
         f=@(x) 2.^((m+1)./m).* x .* ((x.^(1-m)-1)./(1-m)).^(1./m) ./ (1 - a(j).*(x -1)).^(1./m);
         I(i,1) = simpsons( f,1,y(i), 10000);    
         %%% we can not use Simpson here, the equally step will have HUGE error
+        % https://calculus7.org/2017/01/07/vectorization-of-integration/
         J(i,1) = y(i)^2 - 1;
         end
         
