@@ -69,6 +69,7 @@ for j = 1: v
         I(i,1) = simpsons( f,1,y(i), 10000);    
         %%% we can not use Simpson here, the equally step will have HUGE error
         % https://calculus7.org/2017/01/07/vectorization-of-integration/
+        % acutally, the calculation is right comparing to Python quad calculation results!
         J(i,1) = y(i)^2 - 1;
         end
         
