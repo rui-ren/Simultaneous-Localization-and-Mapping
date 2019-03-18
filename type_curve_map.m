@@ -24,10 +24,10 @@ k = 1.85;             % flow index
 
 % The operation type curve
 X = y / (pi*rw^2);
-X = log(X);
+X = log10(X);
 
 Y = x*(m/(2*m+1))*(1/rw)^((1+m)/m)*(delta_p/k)^(1/m);
-Y = log(Y);
+Y = log10(Y);
 figure(2)
 plot(X,Y,'Ob')
 
@@ -50,7 +50,7 @@ slope_drilling = p1(1,1);
 % plot theoretical data from the 
 figure (3);
 m = 0.65;
-a =[0.001,0.008,0.001 , 0.004, 0.01 , 0.02, 0.1 , 0.08];
+a =[0.0001,0.008,0.001];
 [b,v] = size(a);
 slope_theoretical = zeros(v,1);
 
@@ -61,29 +61,26 @@ for j = 1: v
     I = zeros(n,1);
     J = zeros(n,1);
     
-    % this solution for large order might not be accurate!
+    % Might not be accurate, we need use stack to save
     % we use simpson integrition
-    
         for i = 1:n
         f=@(x) 2.^((m+1)./m).* x .* ((x.^(1-m)-1)./(1-m)).^(1./m) ./ (1 - a(j).*(x -1)).^(1./m);
-        I(i,1) = simpsons( f,1,y(i), 10000);    
-        %%% we can not use Simpson here, the equally step will have HUGE error
-        % https://calculus7.org/2017/01/07/vectorization-of-integration/
-        % acutally, the calculation is right comparing to Python quad calculation results!
+        I(i,1) = simpsons( f,1,y(i), 10000);
         J(i,1) = y(i)^2 - 1;
         end
         
-    plot (log(I),log(J));
-    c = polyfit(log(I),log(J),1);
+    plot (log10(I),log10(J),'.');
+    c = polyfit(log10(I),log10(J),1);
     slope_theoretical(j) = c(1,1);
     hold on
 end
 
 figure(3)
-
-%%% 
-
+% 
+% %%% 
+% 
 % curve fit for the final version
+figure(4)
 
-p1 = polyfit(log(I),log(J),1);
-plot(log(I),polyval(p1,log(I)),'O')
+% p1 = polyfit(log(I),log(J),1);
+% plot(log(I),polyval(p1,log(I)),'O')
