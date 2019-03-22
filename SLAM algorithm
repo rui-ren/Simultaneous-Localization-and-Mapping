@@ -1,1 +1,55 @@
 
+#(1). Uniform Probability quiz   (Initial belief)
+grid = 5
+p1 = 1./grid
+# uniform probability
+p = [p1]*grid
+print(p)
+
+#(2). Measurement-posterior 
+#/*------------Measurement Updata---------------*/#
+# initial belief
+p = [0.2, 0.2, 0.2, 0.2, 0.2]   
+# map
+world = ['green', 'red', 'red', 'green', 'green']
+# measurement multiple measurement
+measurements= ['red', 'green']
+# the accuracy of the sensor
+pHit = 0.6
+pMiss = 0.2
+
+def sense(p,Z):
+    q = []
+    for i in range(len(world)):
+        hit = int((world[i]==Z))
+        q.append(p[i] * pHit * hit + (1-hit) * pMiss * p[i])
+    s = sum(q)
+    q = [q[i]/s for i in range(len(q))]
+    return q
+
+# return the normalized distribution
+for i in range(len(measurements)):
+    p =  sense(q,measurements[i])
+print(p)
+
+# (3) Convolution --- Movement updata --- Robot Motion
+# ----------accurate motion------------------
+# ----------inaccurate motion ---------------
+pExact = 0.8
+pOvershoot = 0.1
+pUndershoot = 0.1
+def move(p,U):
+    stack = []
+    for i in range(len(p)):
+        s = p[(i-U)%(len(p))]*pExact   # use the reverse selection
+        s = s + p[(i-U-1)%len(p)]*pOvershoot
+        s = s + p[(i-U+1)%len(p)]*pUndershoot
+        stack.append(s)
+    return stack
+    
+ # if we move, we are losing information for our calculation
+# we move 1000, the possibility is 0.2
+
+for i in range(1000):
+    p = move(p,1)
+print(p)
