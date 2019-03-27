@@ -12,9 +12,7 @@ class func:
         df = pd.DataFrame({'x':[]})
         a = lambda i: self.x * math.cos(i * math.pi/180) + self.y * math.sin(i * math.pi/180)  # the distance to the line
         distance = [a(i) for i in range(181) ]
-        df = df.append(pd.DataFrame({'%s'%self.x: distance}),sort = True)
-        df.dropna(axis = 'columns')
-        return df
+        return distance
 
 
 
