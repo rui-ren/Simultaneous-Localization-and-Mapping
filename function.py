@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[7]:
 from math import pi
 from math import sin
 from math import cos
+
 class func:
     def __init__(self, x, y):
         self.x = x
