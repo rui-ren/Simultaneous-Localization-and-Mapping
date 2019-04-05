@@ -160,14 +160,3 @@ for param in pdq:
 print(results.summary().tables[1]) 
 
 '''
-
-'''
-axes[1].plot((df_KValue['Time & Date']),(df_KValue['TORQUE']), 'g-')
-axes[2].plot((df_KValue['Time & Date']),(df_KValue['ROP']), 'k-')
-axes[3].plot((df_KValue['Time & Date']),(df_KValue['RPM']), 'k-')
-axes[4].plot((df_KValue['Time & Date']),(df_KValue['SPP']), 'y-')
-axes[5].plot((df_KValue['Time & Date']),(df_KValue['WOB']), 'y-')
-axes[6].plot((df_KValue['Time & Date']),(df_KValue['Pump 1']), 'm-')
-axes[7].plot((df_KValue['Time & Date']),(df_KValue['WOH']), 'm-')
-axes[8].plot((df_KValue['Time & Date']),(df_KValue['FLW OUT']), 'b-')
-'''
