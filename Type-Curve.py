@@ -32,7 +32,7 @@ Time_ds = {}
 for delta_p in delta_ps:
     Rad_ds['%i' % delta_p] = []
     Time_ds['%i' % delta_p] = []
-    
+# vectorization and speed up the code
 # iterate the pressure
 for j, delta_p in enumerate(delta_ps):
     # dimensionless lost circulation parameters
