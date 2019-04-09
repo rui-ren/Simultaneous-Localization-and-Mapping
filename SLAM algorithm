@@ -1,11 +1,13 @@
-#(1). Uniform Probability quiz   (Initial belief)
+# Python 
+
+# (1). Uniform Probability quiz   (Initial belief)
 grid = 5
 p1 = 1./grid
 # uniform probability
 p = [p1]*grid
 print(p)
 
-#(2). Measurement-posterior 
+# (2). Measurement-posterior 
 #/*------------Measurement Updata---------------*/#
 # initial belief
 p = [0.2, 0.2, 0.2, 0.2, 0.2]   
