@@ -1,2 +1,3 @@
-# Simultaneous-Localization-and-Mapping
-SLAM
+# Simultaneous Localization and Mapping
+
+# Dysfunction detection and localization
