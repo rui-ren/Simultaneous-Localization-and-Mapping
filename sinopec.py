@@ -23,7 +23,6 @@ import matplotlib.dates as mdates
 from matplotlib import dates
 from pylab import rcParams
 
-
 '''
 from IPython.display import HTML
 video = open("animation.mp4", "rb").read()
@@ -31,8 +30,6 @@ video_encoded = video.encode("base64")
 video_tag = '<video controls alt="test" src="data:video/x-m4v;base64,{0}">'.format(video_encoded)
 HTML(video_tag)
 '''
-
-
 
 os.chdir('C:/Users/rur4893/Desktop/Real Time Lost Circulation')
 
