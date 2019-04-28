@@ -129,4 +129,4 @@ data = [[math.log10(T_d['3200000'][0][i]) for i in range(R_d['3200000'][0].shape
         [math.log10(R_d['3200000'][0][i]**2 - 1) for i in range(R_d['3200000'][0].shape[0])]]
 
 
-
+# Kernel function --
