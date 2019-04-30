@@ -1,2 +1,2 @@
-# Simultaneous-Localization-and-Mapping
-SLAM
+# Simultaneous Localization and Mapping
+
