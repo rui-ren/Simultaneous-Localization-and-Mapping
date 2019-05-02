@@ -55,5 +55,4 @@ for i in range(1000):
     p = move(p,1)
 print(p)
 
-
 # Bayes theorem update
