@@ -34,7 +34,7 @@ for delta_p in delta_ps:
     Time_ds['%i' % delta_p] = []
 # vectorization and speed up the code
 # iterate the pressure
-for j, delta_p in enumerate(delta_ps):
+for j, delta_p in enumerate(delta_ps):  #vectorization pls
     # dimensionless lost circulation parameters
     # Dimensionless_a = [0.0001,0.008,0.001]  The original dimensionless group
     # Dimensionless_a = [0.0001,0.001,0.008]
