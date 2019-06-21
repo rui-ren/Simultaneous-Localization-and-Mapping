@@ -79,7 +79,7 @@ plt.style.use('ggplot')
 y.plot()
 '''###
 
-f,axes=plt.subplots(len(Key_Parameter)-1,1)
+f,axes=plt.subplots(len(Key_Parameter)-1,1, sharex = True)
 
 axes[0].plot((df_KValue['Bit Depth']), 'g-')
 axes[1].plot((df_KValue['TORQUE']), 'g-')
