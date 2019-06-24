@@ -5,6 +5,7 @@ Created on Fri Mar 22 16:54:55 2019
 @author: rur4893
 """
 
+
 import matplotlib.pyplot as plt
 from scipy.integrate import quad
 import numpy as np
@@ -28,6 +29,8 @@ delta_ps = [4.2*10**6, 3.2*10**6, 2.2*10**6]
 
 Rad_ds = {}
 Time_ds = {}
+
+# vectorization!
 
 for delta_p in delta_ps:
     Rad_ds['%i' % delta_p] = []
