@@ -62,7 +62,7 @@ Key_Parameter = ['Time & Date',\
 df_KValue = df[Key_Parameter]
 # del df_KValue['Time & Date']
 
-df.set_index = 'Time & Data'
+df.set_index( 'Time & Data')
 
 df_KValue = df_KValue.astype(float)
 df_KValue.index = df['Time & Date']
