@@ -10,7 +10,6 @@ Created on Thu Apr  4 09:46:01 2019
 Created on Mon Apr  1 21:50:29 2019
 @author: Administrator
 @ Data Analysis for Real-time data
-@ Data Courtesy-- Sinopec
 """
 
 import numpy as np
